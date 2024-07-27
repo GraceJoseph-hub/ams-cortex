@@ -14,25 +14,29 @@ const Sidebar = () => {
     <div className="flex flex-col justify-center items-center gap-12 py-5 rounded-md bg-white">
       <div
         onClick={() => handleLinkClick("grid")}
-        className={`cursor-pointer p-2 rounded-md ${
-          activeLink === "grid" ? "bg-blue-500 text-white" : "hover:bg-gray-200"
+        className={`cursor-pointer px-[17px] py-[4px] rounded ${
+          activeLink === "grid"
+            ? " border-l-4 border-blue-500 text-black"
+            : "hover:bg-gray-200"
         }`}
       >
         <Grid />
       </div>
       <div
         onClick={() => handleLinkClick("mail")}
-        className={`cursor-pointer p-2 rounded-md ${
-          activeLink === "mail" ? "bg-blue-500 text-white" : "hover:bg-gray-200"
+        className={`cursor-pointer rounded px-[17px] py-[4px] ${
+          activeLink === "mail"
+            ? " border-l-4 border-blue-500 text-black"
+            : "hover:bg-gray-200"
         }`}
       >
         <Mail />
       </div>
       <div
         onClick={() => handleLinkClick("timer")}
-        className={`cursor-pointer p-2 rounded-md ${
+        className={`cursor-pointer rounded px-[17px] py-[4px] ${
           activeLink === "timer"
-            ? "bg-blue-500 text-white"
+            ? " border-l-4 border-blue-500 text-black"
             : "hover:bg-gray-200"
         }`}
       >
