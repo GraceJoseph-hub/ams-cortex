@@ -1,18 +1,18 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Nav from "./components/Navbar/Nav";
-import Home from "./components/home/Home";
 import "./App.css";
+import Nav from "./components/Navbar/Nav";
+import Sidebar from "./components/sidebar/Sidebar"
+import Dashboard from "./components/dashboard/Dashboard";
 
 function App() {
   return (
-    <div className="h-screen py-12 px-14 bg-grey">
-      <Router>
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-        {/* <Footer /> */}
-      </Router>
+    <div className=" py-12 px-14 bg-grey">
+      <Nav />
+      <div className="flex gap-10 mt-16">
+        <div className="w-[5%]">
+          <Sidebar />
+        </div>
+        <Dashboard />
+      </div>
     </div>
   );
 }
