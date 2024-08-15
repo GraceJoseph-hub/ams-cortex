@@ -14,17 +14,25 @@ function App() {
   // Once a user successfully logs in, then the page they should see is the admindashboard.
   // If a user doeasn't have an account, they can click on the register button to lead them to the registration form.
   return (
-    <div className="flex items-center h-full">
-      <div className="bg-blue-500 w-1/2">
-        {/* <img src={treadmillImg} alt="A woman running on a treadmill." height={200} width={200} className=""/> */}
-        <img src={randomImge} alt="A woman running on a treadmill." className=""/>
+    <div className="flex h-screen">
+      <div className="bg-blue-500 w-1/2 flex justify-center items-center relative">
+        <h1 className="absolute top-2 left-10 text-white">Logo</h1>
+        <img
+          src={randomImge}
+          alt="A woman running on a treadmill."
+          className=""
+        />
       </div>
-      <div className="bg-white w-1/2">
+
+      
+      <div className="bg-white w-1/2 flex justify-center items-center relative">
+        <p className="absolute top-2 left-10">Back</p>
         <Login />
         {/* <Register /> */}
       </div>
-      {/* <Admindashboard /> */}
     </div>
+    //  <Admindashboard /> 
+    
   );
 }
 
