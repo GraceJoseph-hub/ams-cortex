@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState } from "react";
 import Admindashboard from "./components/admin/Admindashboard";
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
@@ -8,6 +9,11 @@ import randomImge from './assets/img/treadmill-2.png'
 
 
 function App() {
+  const [screenState, setScreenState] = useState(0)
+
+  const signInHandler = () => {
+    setScreenState((prev) => prev + 1)
+  }
   // To do
   // The login page will be the landing page.
   // I'll create states to hold the screens and render the screens conditionally.
@@ -24,15 +30,14 @@ function App() {
         />
       </div>
 
-      
       <div className="bg-white w-1/2 flex justify-center items-center relative">
         <p className="absolute top-2 left-10">Back</p>
-        <Login />
+        {screenState === 0 && <Login onSuccessfulLogin={signInHandler} />}
+        {screenState === 1 && <Admindashboard />}
         {/* <Register /> */}
       </div>
     </div>
-    //  <Admindashboard /> 
-    
+    //
   );
 }
 

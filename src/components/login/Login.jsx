@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import Input from '../globalComponents/Input';
 
-const Login = () => {
-  const [email, setEmail] = useState("")
+const Login = ({ onSuccessfulLogin }) => {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [checkBox, setCheckBox] = useState(false);
   const [canSubmit, setCanSubmit] = useState(false);
@@ -10,38 +10,49 @@ const Login = () => {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   useEffect(() => {
-    const isFormValid = email !== "" && password !== "" && checkBox == true && emailPattern.test(email)
+    const isFormValid =
+      email !== "" &&
+      password !== "" &&
+      checkBox == true &&
+      emailPattern.test(email);
 
-    setCanSubmit(isFormValid)
-  },[email, password, checkBox])
+    setCanSubmit(isFormValid);
+  }, [email, password, checkBox]);
 
   const emailHandler = (e) => {
-    setEmail(e.target.value)
+    setEmail(e.target.value);
     console.log(e.target.value);
-  }
+  };
 
   const passwordHandler = (e) => {
-    setPassword(e.target.value)
-    console.log(e.target.value)
-  }
+    setPassword(e.target.value);
+    console.log(e.target.value);
+  };
 
   const checkBoxHandler = (e) => {
-    setCheckBox(e.target.checked)
-  }
+    setCheckBox(e.target.checked);
+  };
 
   const submitHandler = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
+    if (canSubmit) {
+      console.log("Login successful");
+      onSuccessfulLogin();
+    } else {
+      console.log(
+        "Cannot log in. Please check that all the fields are correctly filled."
+      );
+    }
+    // const submitForm = canSubmit
+    //   ? "Login successful"
+    //   : "Cannot log in. Please check that all the fields are correctly filled.";
 
-    const submitForm = canSubmit
-      ? "Login successful"
-      : "Cannot log in. Please check that all the fields are correctly filled.";
-    
-    console.log(submitForm);
-    
+    // console.log(submitForm);
+
     setEmail("");
     setPassword("");
-  }
+  };
   return (
     <div className="flex flex-col gap-5">
       <div className="flex flex-col gap-2">
@@ -71,7 +82,11 @@ const Login = () => {
         </div>
 
         <div className="flex gap-3">
-          <input type="checkbox" onChange={checkBoxHandler} checked={checkBox} />
+          <input
+            type="checkbox"
+            onChange={checkBoxHandler}
+            checked={checkBox}
+          />
           <label htmlFor="">Remember me</label>
         </div>
 
@@ -81,6 +96,6 @@ const Login = () => {
       </form>
     </div>
   );
-}
+};
 
 export default Login
