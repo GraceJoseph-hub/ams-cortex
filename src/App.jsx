@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Admindashboard from "./components/admin/Admindashboard";
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
@@ -9,9 +9,8 @@ import randomImge from "./assets/img/treadmill-2.png";
 function App() {
   const [screenState, setScreenState] = useState("login");
   
-
   const showRegisterScreen = () => {
-    setScreenState("register"); // Change to Register screen
+    setScreenState("register");
   };
 
   return (
@@ -30,7 +29,7 @@ function App() {
                 />
               </div>
 
-              <div className="bg-white w-1/2 flex justify-center items-center relative">
+              <div className="bg-white w-1/2 flex justify-around items-center relative">
                 {screenState === "login" && (
                   <Login
                     onRegister={showRegisterScreen}
