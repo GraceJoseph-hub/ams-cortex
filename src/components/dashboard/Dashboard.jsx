@@ -64,9 +64,9 @@ const Dashboard = () => {
   ];
   return (
     <div>
-      <div className="flex gap-8">
+      <div className="flex gap-8 ">
         <DateCard />
-        <div className="grid grid-cols-3 grid-rows-2 gap-8">
+        <div className="grid grid-cols-3 grid-rows-2 gap-8 max-[820px]:grid-cols-2 max-[820px]:grid-rows-1">
           {data.map((item, index) => (
             <div key={index}>
               <Smallcard
