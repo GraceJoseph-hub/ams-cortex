@@ -13,29 +13,36 @@ function App() {
     setScreenState("register");
   };
 
+  const showLoginScreen = () => {
+    setScreenState("login");
+  };
+
   return (
     <Router>
       <Routes>
         <Route
           path="/"
           element={
-            <div className="flex h-screen">
-              <div className="bg-blue-500 w-1/2 flex justify-center items-center relative">
+            <div className="flex h-screen w-full max-[800px]:flex-col max-[800px]:items-center max-[800px]:w-full max-[800px]:overflow-hidden max-[800px]:gap-10 ">
+              <div className="bg-blue-500 w-1/2 flex justify-center items-center relative max-[800px]:w-full">
                 <h1 className="absolute top-2 left-10 text-white">Logo</h1>
                 <img
                   src={randomImge}
                   alt="A woman running on a treadmill."
-                  className=""
+                  className="max-[800px]:w-[400px]"
                 />
               </div>
 
-              <div className="bg-white w-1/2 flex justify-around items-center relative">
+              <div className="bg-white w-1/2 flex justify-around items-center relative max-[800px]:w-auto">
                 {screenState === "login" && (
                   <Login
                     onRegister={showRegisterScreen}
+                    // className="max-[400px]:px-[20px]"
                   />
                 )}
-                {screenState === "register" && <Register />}
+                {screenState === "register" && (
+                  <Register onBack={showLoginScreen} />
+                )}
               </div>
             </div>
           }

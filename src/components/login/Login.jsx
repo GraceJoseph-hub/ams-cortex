@@ -3,7 +3,7 @@ import Input from '../globalComponents/Input';
 import { useNavigate } from 'react-router-dom';
 
 
-const Login = ({ onRegister }) => {
+const Login = ({ onRegister, className }) => {
   // STATES
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,7 +58,7 @@ const Login = ({ onRegister }) => {
   };
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className={`flex flex-col gap-5 ${className}`}>
       <div className="flex flex-col gap-2">
         <div className="text-red-500 italic">
           <p>If you're visiting for the first time, Kindly type in an email</p>

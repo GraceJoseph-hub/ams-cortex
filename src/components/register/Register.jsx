@@ -3,14 +3,15 @@ import { useNavigate } from 'react-router-dom'
 import Input from '../globalComponents/Input'
 import greenCheck from '../icons/greenCheck.svg'
 import redError from '../icons/rederror.svg'
+import BackArrow from '../icons/BackArrow'
 
 const lowercaseRegex = /[a-z]/;
 const uppercaseRegex = /[A-Z]/;
 const numberRegex = /[0-9]/;
 const specialCharRegex = /[!@#$%^&*()_+{}\]:;<>,.?~\\-]/;
 
-const Register = () => {
-  const navigate = useNavigate()
+const Register = ({onBack}) => {
+  // const navigate = useNavigate()
   const [busName, setBusName] = useState('');
   const [numOfEmployee, setNumOfEmployee] = useState('')
   const [password, setPassword] = useState('');
@@ -71,20 +72,21 @@ const Register = () => {
   }
   
   return (
-    <form onSubmit={submitFormHandler} className="flex flex-col gap-3">
-      <p
-        className="absolute top-2 left-10 cursor-pointer text-blue-500"
-        onClick={() => navigate("/")}
+    <form onSubmit={submitFormHandler} className="flex flex-col gap-3 w-1/2">
+      <div
+        className="absolute flex gap-5 top-2 left-10 cursor-pointer text-blue-500"
+        onClick={onBack}
       >
-        Back
-      </p>
+        <BackArrow />
+        <p>Back</p>
+      </div>
       <h2 className="font-bold text-2xl">Register</h2>
       <Input
         label="Business Name"
         type="text"
         onChange={busNameHandler}
         value={busName}
-        className="w-[26.25rem]"
+        className="max-w-[28rem] "
       />
       <Input
         label="Number of Employee"
@@ -108,24 +110,24 @@ const Register = () => {
         Proceed
       </button>
 
-      <h2 className='font-bold'>Password must contain :</h2>
-      <div className='flex gap-3 mb-0'>
+      <h2 className="font-bold">Password must contain :</h2>
+      <div className="flex gap-3 mb-0">
         <img src={isTenCharacter ? greenCheck : redError} alt="" />
         <span>At least 10 characters</span>
       </div>
-      <div className='flex gap-3 mt-[-8px]'>
+      <div className="flex gap-3 mt-[-8px]">
         <img src={isLowerCase ? greenCheck : redError} alt="" />
         <span>Lower case letters (a-z)</span>
       </div>
-      <div className='flex gap-3 mt-[-8px]'>
+      <div className="flex gap-3 mt-[-8px]">
         <img src={isUpperCase ? greenCheck : redError} alt="" />
         <span>Upper case letters (A-Z)</span>
       </div>
-      <div className='flex gap-3 mt-[-8px]'>
+      <div className="flex gap-3 mt-[-8px]">
         <img src={isNumbers ? greenCheck : redError} alt="" />
         <span>Numbers (0-9)</span>
       </div>
-      <div className='flex gap-3 mt-[-8px]'>
+      <div className="flex gap-3 mt-[-8px]">
         <img src={isSpecialCharacters ? greenCheck : redError} alt="" />
         <span>Special Character(s)</span>
       </div>
